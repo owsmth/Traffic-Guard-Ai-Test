@@ -1,151 +1,270 @@
-/* Main layout styling */
-body {
-  /* Increased from 60px to 70px to prevent navbar overlap with content */
-  padding-top: 70px;
-  /* Ensures full page height */
-  min-height: 100vh;
-  /* Light gray background for better contrast */
-  background-color: #f8f9fa;
-}
-
-/* Navbar styling */
+/* Main navbar container styling */
 .navbar {
-  /* Changed from solid white to semi-transparent for better visual integration */
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  /* Added modern glass effect */
-  backdrop-filter: blur(8px);
-  /* Safari support for glass effect */
-  -webkit-backdrop-filter: blur(8px);
-  /* Subtle shadow for depth */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  /* Changed from fixed height to minimum height for better responsiveness */
-  min-height: 60px;
-  /* Ensures navbar stays above other content */
-  z-index: 1030;
-  /* Consistent padding around navbar content */
+  /* Adds subtle shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Consistent padding around navbar */
   padding: 0.5rem 1rem;
 }
 
-.navbar-brand {
-  /* Makes brand text more prominent */
-  font-weight: 600;
-  /* Vertical alignment for brand */
-  padding: 0.5rem 0;
+/* Container for bell icon and notification text */
+.notification-icon {
+  /* Allows positioning of badge */
+  position: relative;
+  /* Shows pointer on hover */
+  cursor: pointer;
+  /* Space around the icon */
+  padding: 0.5rem;
+  /* Aligns bell icon with text */
+  display: inline-flex;
+  align-items: center;
+  /* Space between bell and text */
+  gap: 0.5rem;
 }
 
-/* Main content container */
-.main-container {
-  /* Reduced from 2rem to 1.5rem for better spacing */
-  padding-top: 1.5rem;
-  padding-bottom: 2rem;
-  /* Adjusts for new navbar height */
-  min-height: calc(100vh - 70px);
+/* Red dot notification indicator */
+.notification-badge {
+  /* Positions badge relative to container */
+  position: absolute;
+  /* Positions dot near bell */
+  top: 18px;
+  right: 6px;
+  /* Size of the dot */
+  width: 6px;
+  height: 6px;
+  /* Red color for attention */
+  background-color: #ff4444;
+  /* Makes it circular */
+  border-radius: 50%;
+  /* Glowing effect */
+  box-shadow: 0 2px 8px #ff4444;
+  /* Pulsing animation */
+  animation: pulse 2s infinite;
 }
 
-.container {
-  /* Increased for better content display on wide screens */
-  max-width: 1400px;
-  /* Consistent horizontal padding */
-  padding: 0 1.5rem;
-}
-
-/* Card and content spacing */
-.card {
-  /* Consistent spacing between cards */
-  margin-bottom: 1.5rem;
-}
-
-/* Responsive container padding */
-@media (max-width: 768px) {
-  body {
-    /* Slightly reduced padding for mobile */
-    padding-top: 65px;
+/* Animation for the glowing effect */
+@keyframes pulse {
+  /* Start of animation */
+  0% {
+    box-shadow: 0 2px 0 0 rgba(255, 68, 68, 0.4);
   }
-  
-  .main-container {
-    /* Reduced padding for mobile */
-    padding-top: 1rem;
+  /* Peak of animation */
+  70% {
+    box-shadow: 0 2px 0 8px rgba(255, 68, 68, 0);
   }
-
-  .container {
-    /* Reduced horizontal padding for mobile */
-    padding: 0 1rem;
+  /* End of animation */
+  100% {
+    box-shadow: 0 2px 0 0 rgba(255, 68, 68, 0);
   }
 }
 
-/* Dropdown menu fixes */
-.dropdown-menu {
-  /* Forces absolute positioning to prevent scroll issues */
-  position: absolute !important;
-  /* Removes Bootstrap's default transform */
-  transform: none !important;
-  /* Added space between navbar and dropdown */
-  margin-top: 0.5rem !important;
-  /* Rounded corners for modern look */
+/* Notification dropdown container */
+#notifications-dropdown {
+  /* For dropdown positioning */
+  position: relative;
+}
+
+/* Styling for the dropdown menu */
+#notifications-dropdown .dropdown-menu {
+  /* Absolute positioning for overlay */
+  position: absolute;
+  /* Aligns to right edge */
+  right: 0;
+  left: auto;
+  /* Places below trigger */
+  top: 100%;
+  /* Space from trigger */
+  margin-top: 0.5rem;
+  /* Fixed width for consistency */
+  width: 300px;
+  /* Clean edges */
+  border: none;
   border-radius: 8px;
   /* Subtle shadow for depth */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  /* Subtle border */
-  border: 1px solid rgba(0,0,0,0.08);
-  /* Semi-transparent background */
-  background-color: rgba(255, 255, 255, 0.98);
-  /* Glass effect for dropdowns */
-  backdrop-filter: blur(8px);
-  /* Safari support */
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* White background */
+  background: white;
+  /* No internal padding */
+  padding: 0;
 }
 
-.dropdown-menu.show {
-  /* Ensures dropdown is visible */
-  display: block !important;
-  /* Keeps dropdown above other content */
-  z-index: 1031 !important;
+/* Individual notification items */
+#notifications-dropdown .dropdown-item {
+  /* Consistent internal spacing */
+  padding: 1rem;
+  /* Separator between items */
+  border-bottom: 1px solid #eee;
+  /* Allows text to wrap */
+  white-space: normal;
 }
 
-/* Navbar collapse fixes */
-.navbar-collapse {
-  /* Removed solid background */
-  background: none;
+/* Removes border from last item */
+#notifications-dropdown .dropdown-item:last-child {
+  border-bottom: none;
 }
 
+/* Hover effect for items */
+#notifications-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Notification message text */
+.notification-message {
+  /* Semi-bold weight */
+  font-weight: 500;
+  /* Dark text for readability */
+  color: #333;
+  /* Space below message */
+  margin-bottom: 0.25rem;
+}
+
+/* Timestamp text */
+.notification-time {
+  /* Smaller text size */
+  font-size: 0.8rem;
+  /* Lighter color for secondary info */
+  color: #666;
+  /* No margins */
+  margin: 0;
+}
+
+/* More Options dropdown styling */
+.custom-dropdown .dropdown-menu {
+  border: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  min-width: 200px;
+}
+
+/* More Options dropdown items */
+.custom-dropdown .dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect for More Options items */
+.custom-dropdown .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+/* Divider in dropdowns */
+.custom-dropdown .dropdown-divider {
+  margin: 0;
+  border-color: #eee;
+}
+
+/* Mobile responsive styles */
 @media (max-width: 991.98px) {
-  .navbar-collapse {
-    /* Mobile menu padding */
-    padding: 1rem;
-    /* Extends to edges on mobile */
-    margin: 0 -1rem;
-    /* Semi-transparent background for mobile menu */
-    background-color: rgba(255, 255, 255, 0.98);
-    /* Glass effect for mobile menu */
-    backdrop-filter: blur(8px);
-    /* Safari support */
-    -webkit-backdrop-filter: blur(8px);
-  }
-  
-  .navbar-nav .nav-link {
-    /* Consistent vertical spacing in mobile menu */
-    padding: 0.5rem 0;
-  }
-  
-  .dropdown-menu {
-    /* Removes space between items in mobile view */
-    margin-top: 0 !important;
-    /* Consistent padding in mobile dropdown */
-    padding: 0.5rem 0;
-    /* Removes border in mobile view */
-    border: none;
-    /* Removes shadow in mobile view */
-    box-shadow: none;
-    /* Removes background in mobile nested dropdowns */
-    background: none;
-    /* Removes glass effect in mobile dropdowns */
-    backdrop-filter: none;
-    /* Removes Safari glass effect in mobile dropdowns */
-    -webkit-backdrop-filter: none;
+  /* Adjusted navbar padding */
+  .navbar {
+    padding: 0.5rem;
   }
 
-  .dropdown-item:hover {
-    /* Subtle hover effect for mobile menu items */
-    background-color: rgba(0, 0, 0, 0.04);
+  /* Smaller brand text */
+  .navbar-brand {
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+
+  /* Mobile menu panel */
+  .navbar-collapse {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    /* Scrollable menu */
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+
+  /* Space between nav items */
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+  /* Mobile nav links */
+  .nav-link {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  /* Mobile hover effect */
+  .nav-link:hover {
+    background-color: #f8f9fa;
+  }
+
+  /* Mobile menu button */
+  .navbar-toggler {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 6px;
+  }
+
+  /* Focus state for menu button */
+  .navbar-toggler:focus {
+    box-shadow: none;
+    outline: 2px solid rgba(0, 123, 255, 0.25);
+  }
+
+  /* Full width dropdowns on mobile */
+  #notifications-dropdown,
+  .custom-dropdown {
+    width: 100%;
+  }
+
+  /* Mobile dropdown styling */
+  #notifications-dropdown .dropdown-menu,
+  .custom-dropdown .dropdown-menu {
+    position: static;
+    width: 100%;
+    margin: 0.5rem 0;
+    box-shadow: none;
+    border: 1px solid #eee;
+  }
+}
+
+/* Small mobile device adjustments */
+@media (max-width: 576px) {
+  /* Smaller brand text */
+  .navbar-brand {
+    font-size: 1rem;
+  }
+
+  /* Smaller nav text */
+  .nav-link {
+    font-size: 0.95rem;
+  }
+
+  /* Smaller notification text */
+  .notification-message {
+    font-size: 0.9rem;
+  }
+
+  /* Smaller timestamp */
+  .notification-time {
+    font-size: 0.75rem;
+  }
+}
+
+/* Safari and Chrome specific styles */
+@supports (-webkit-appearance: none) {
+  /* Blur effect for dropdowns */
+  .custom-dropdown .dropdown-menu,
+  #notifications-dropdown .dropdown-menu {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Firefox specific styles */
+@-moz-document url-prefix() {
+  /* Semi-transparent background for Firefox */
+  .custom-dropdown .dropdown-menu,
+  #notifications-dropdown .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.95);
   }
 } 

@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { useNavigate } from "react-router-dom";
-import "./layout.css";
+import "../styles/layout.css";
 
 function CollapsibleExample() {
   const navigate = useNavigate();
