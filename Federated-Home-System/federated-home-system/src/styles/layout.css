@@ -1,0 +1,151 @@
+/* Main layout styling */
+body {
+  /* Increased from 60px to 70px to prevent navbar overlap with content */
+  padding-top: 70px;
+  /* Ensures full page height */
+  min-height: 100vh;
+  /* Light gray background for better contrast */
+  background-color: #f8f9fa;
+}
+
+/* Navbar styling */
+.navbar {
+  /* Changed from solid white to semi-transparent for better visual integration */
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  /* Added modern glass effect */
+  backdrop-filter: blur(8px);
+  /* Safari support for glass effect */
+  -webkit-backdrop-filter: blur(8px);
+  /* Subtle shadow for depth */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  /* Changed from fixed height to minimum height for better responsiveness */
+  min-height: 60px;
+  /* Ensures navbar stays above other content */
+  z-index: 1030;
+  /* Consistent padding around navbar content */
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+  /* Makes brand text more prominent */
+  font-weight: 600;
+  /* Vertical alignment for brand */
+  padding: 0.5rem 0;
+}
+
+/* Main content container */
+.main-container {
+  /* Reduced from 2rem to 1.5rem for better spacing */
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  /* Adjusts for new navbar height */
+  min-height: calc(100vh - 70px);
+}
+
+.container {
+  /* Increased for better content display on wide screens */
+  max-width: 1400px;
+  /* Consistent horizontal padding */
+  padding: 0 1.5rem;
+}
+
+/* Card and content spacing */
+.card {
+  /* Consistent spacing between cards */
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive container padding */
+@media (max-width: 768px) {
+  body {
+    /* Slightly reduced padding for mobile */
+    padding-top: 65px;
+  }
+  
+  .main-container {
+    /* Reduced padding for mobile */
+    padding-top: 1rem;
+  }
+
+  .container {
+    /* Reduced horizontal padding for mobile */
+    padding: 0 1rem;
+  }
+}
+
+/* Dropdown menu fixes */
+.dropdown-menu {
+  /* Forces absolute positioning to prevent scroll issues */
+  position: absolute !important;
+  /* Removes Bootstrap's default transform */
+  transform: none !important;
+  /* Added space between navbar and dropdown */
+  margin-top: 0.5rem !important;
+  /* Rounded corners for modern look */
+  border-radius: 8px;
+  /* Subtle shadow for depth */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  /* Subtle border */
+  border: 1px solid rgba(0,0,0,0.08);
+  /* Semi-transparent background */
+  background-color: rgba(255, 255, 255, 0.98);
+  /* Glass effect for dropdowns */
+  backdrop-filter: blur(8px);
+  /* Safari support */
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.dropdown-menu.show {
+  /* Ensures dropdown is visible */
+  display: block !important;
+  /* Keeps dropdown above other content */
+  z-index: 1031 !important;
+}
+
+/* Navbar collapse fixes */
+.navbar-collapse {
+  /* Removed solid background */
+  background: none;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    /* Mobile menu padding */
+    padding: 1rem;
+    /* Extends to edges on mobile */
+    margin: 0 -1rem;
+    /* Semi-transparent background for mobile menu */
+    background-color: rgba(255, 255, 255, 0.98);
+    /* Glass effect for mobile menu */
+    backdrop-filter: blur(8px);
+    /* Safari support */
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .navbar-nav .nav-link {
+    /* Consistent vertical spacing in mobile menu */
+    padding: 0.5rem 0;
+  }
+  
+  .dropdown-menu {
+    /* Removes space between items in mobile view */
+    margin-top: 0 !important;
+    /* Consistent padding in mobile dropdown */
+    padding: 0.5rem 0;
+    /* Removes border in mobile view */
+    border: none;
+    /* Removes shadow in mobile view */
+    box-shadow: none;
+    /* Removes background in mobile nested dropdowns */
+    background: none;
+    /* Removes glass effect in mobile dropdowns */
+    backdrop-filter: none;
+    /* Removes Safari glass effect in mobile dropdowns */
+    -webkit-backdrop-filter: none;
+  }
+
+  .dropdown-item:hover {
+    /* Subtle hover effect for mobile menu items */
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+} 
